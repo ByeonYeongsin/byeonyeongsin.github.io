@@ -1,0 +1,13 @@
+title: Yeongsin's Blog
+description: A simple blog powered by Jekyll and GitHub Pages
+baseurl: ""
+url: "https://yeongsin.github.io"
+author: Yeongsin Byeon
+email: yeongsin_byeon@kolon.com
+
+theme: minima
+plugins:
+  - jekyll-feed
+
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
