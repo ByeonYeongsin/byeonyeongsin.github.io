@@ -1,13 +1,40 @@
-title: Yeongsin's Blog
-description: A simple blog powered by Jekyll and GitHub Pages
-baseurl: ""
-url: "https://yeongsin.github.io"
-author: Yeongsin Byeon
-email: yeongsin_byeon@kolon.com
+title: Yeongsin's AI Lab
+description: AI Engineer's personal blog - sharing knowledge on LLMs, RAG systems, and machine learning
+baseurl: "/yeongsin.github.io"
+url: "https://byeonyeongsin.github.io"
+author:
+  name: Yeongsin Byeon
+  email: yeongsin_byeon@kolon.com
+  bio: AI Engineer & ML Researcher
+  location: Seoul, South Korea
 
+# Theme
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate
 
+# Pagination
+paginate: 10
+paginate_path: "/page:num/"
+
+# Markdown
 markdown: kramdown
-permalink: /:year/:month/:day/:title/
+permalink: /:categories/:year/:month/:day/:title/
+
+# Categories
+collections:
+  categories:
+    output: true
+    permalink: /:collection/:name/
+
+# Social Media
+social_links:
+  github: ByeonYeongsin
+  linkedin: yeongsin-byeon
+  email: yeongsin_byeon@kolon.com
+
+# Head
+head_includes:
+  - <meta name="viewport" content="width=device-width, initial-scale=1">
+  - <meta charset="UTF-8">

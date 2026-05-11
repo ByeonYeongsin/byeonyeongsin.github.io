@@ -1,0 +1,9 @@
+main:
+  - title: "Home"
+    url: /yeongsin.github.io/
+  - title: "Blog"
+    url: /yeongsin.github.io/blog/
+  - title: "Projects"
+    url: /yeongsin.github.io/projects/
+  - title: "About"
+    url: /yeongsin.github.io/about/
