@@ -70,6 +70,20 @@ order: 1
       <p>개발 일상 · 삽질기</p>
     </div>
   </a>
+  <a class="cat-card" href="/yeongsin.github.io/categories/ai-product-builder/">
+    <span class="cat-icon">🏗️</span>
+    <div class="cat-info">
+      <h3>AI Product Builder</h3>
+      <p>AI 기반 제품 개발 전주기</p>
+    </div>
+  </a>
+  <a class="cat-card" href="/yeongsin.github.io/categories/깃블로그-바이브코딩/">
+    <span class="cat-icon">✍️</span>
+    <div class="cat-info">
+      <h3>깃블로그 바이브코딩</h3>
+      <p>이 블로그 만든 과정 기록</p>
+    </div>
+  </a>
   <a class="cat-card" href="/yeongsin.github.io/categories/tools-tips/">
     <span class="cat-icon">🔧</span>
     <div class="cat-info">
