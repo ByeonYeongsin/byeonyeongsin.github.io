@@ -119,13 +119,6 @@ exclude:
   - node_modules
   - package*.json
 
-plugins:
-  - jekyll-paginate
-  - jekyll-redirect-from
-  - jekyll-seo-tag
-  - jekyll-archives
-  - jekyll-feed
-
 jekyll-archives:
   enabled: [categories, tags]
   layouts:
