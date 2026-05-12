@@ -7,46 +7,93 @@ order: 2
 
 <style>
 .proj-card {
-  border: 1px solid #e2e8f0; border-radius: 12px;
-  padding: 22px 24px; margin-bottom: 20px;
-  transition: all 0.2s;
+  border: 1px solid var(--border-color, #d0d7de);
+  border-radius: 6px;
+  padding: 20px 22px;
+  margin-bottom: 16px;
+  transition: border-color 0.15s;
 }
 .proj-card:hover {
-  border-color: #667eea;
-  box-shadow: 0 6px 20px rgba(102,126,234,0.12);
-  transform: translateY(-2px);
+  border-color: var(--label-color, #8b949e);
 }
-.proj-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
-.proj-title { font-size: 1.1rem; font-weight: 700; margin: 0; }
+.proj-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.proj-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--heading-color, #1f2328);
+}
 .proj-status {
-  font-size: 0.75rem; padding: 3px 10px; border-radius: 12px;
-  white-space: nowrap; flex-shrink: 0;
+  font-size: 0.72rem;
+  padding: 2px 9px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-weight: 500;
+  border: 1px solid;
 }
-.status-active { background: #dcfce7; color: #166534; }
-.status-done { background: #e0e7ff; color: #3730a3; }
-.proj-desc { color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin: 0 0 12px; }
-.proj-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.status-active {
+  background: #f0fdf4;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+.status-done {
+  background: var(--card-bg, #f6f8fa);
+  color: var(--label-color, #57606a);
+  border-color: var(--border-color, #d0d7de);
+}
+.proj-desc {
+  color: var(--label-color, #57606a);
+  font-size: 0.87rem;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+.proj-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 12px;
+}
 .proj-tech span {
-  font-size: 0.78rem; background: #eef2ff; color: #4f46e5;
-  padding: 3px 10px; border-radius: 12px; border: 1px solid #c7d2fe;
+  font-size: 0.75rem;
+  background: var(--card-bg, #f6f8fa);
+  color: var(--label-color, #57606a);
+  border: 1px solid var(--border-color, #d0d7de);
+  padding: 2px 9px;
+  border-radius: 4px;
 }
 .proj-links a {
-  font-size: 0.85rem; color: #667eea; text-decoration: none;
-  margin-right: 16px; font-weight: 600;
+  font-size: 0.83rem;
+  color: var(--label-color, #57606a);
+  text-decoration: none;
+  margin-right: 14px;
 }
 .proj-links a:hover { text-decoration: underline; }
-.section-label {
-  font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em;
-  text-transform: uppercase; color: #667eea;
-  margin: 32px 0 16px; border-left: 4px solid #667eea; padding-left: 10px;
+
+.sec-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--label-color, #57606a);
+  border-bottom: 1px solid var(--border-color, #d0d7de);
+  padding-bottom: 6px;
+  margin: 28px 0 14px;
 }
+.sec-label:first-of-type { margin-top: 0; }
 </style>
 
-<div class="section-label">🔥 진행 중</div>
+<div class="sec-label">진행 중</div>
 
 <div class="proj-card">
   <div class="proj-header">
-    <div class="proj-title">🤖 Advanced RAG System for Document Analysis</div>
+    <div class="proj-title">Advanced RAG System for Document Analysis</div>
     <span class="proj-status status-active">진행 중</span>
   </div>
   <div class="proj-desc">
@@ -58,13 +105,13 @@ order: 2
   </div>
   <div class="proj-links">
     <a href="https://github.com/ByeonYeongsin/rag-system">GitHub →</a>
-    <a href="/yeongsin.github.io/posts/rag-system-guide/">포스트 →</a>
+    <a href="{{ '/posts/rag-system-guide/' | relative_url }}">포스트 →</a>
   </div>
 </div>
 
 <div class="proj-card">
   <div class="proj-header">
-    <div class="proj-title">🏗️ AI 엔지니어 깃블로그 (Vibe Coding)</div>
+    <div class="proj-title">AI 엔지니어 깃블로그 (Vibe Coding)</div>
     <span class="proj-status status-active">진행 중</span>
   </div>
   <div class="proj-desc">
@@ -72,19 +119,19 @@ order: 2
     AI 도구만으로 블로그 기획부터 배포까지 전 과정을 경험합니다.
   </div>
   <div class="proj-tech">
-    <span>Jekyll</span><span>Chirpy</span><span>GitHub Pages</span><span>Claude</span><span>Vibe Coding</span>
+    <span>Jekyll</span><span>Chirpy</span><span>GitHub Pages</span><span>Claude</span>
   </div>
   <div class="proj-links">
     <a href="https://github.com/ByeonYeongsin/yeongsin.github.io">GitHub →</a>
-    <a href="/yeongsin.github.io/categories/vibe-coding/">Vibe Coding 포스트 →</a>
+    <a href="{{ '/categories/vibe-coding/' | relative_url }}">Vibe Coding 포스트 →</a>
   </div>
 </div>
 
-<div class="section-label">✅ 완료</div>
+<div class="sec-label">완료</div>
 
 <div class="proj-card">
   <div class="proj-header">
-    <div class="proj-title">🎯 LLM Fine-tuning Pipeline</div>
+    <div class="proj-title">LLM Fine-tuning Pipeline</div>
     <span class="proj-status status-done">완료</span>
   </div>
   <div class="proj-desc">
@@ -101,7 +148,7 @@ order: 2
 
 <div class="proj-card">
   <div class="proj-header">
-    <div class="proj-title">💬 Multi-Turn Conversation AI</div>
+    <div class="proj-title">Multi-Turn Conversation AI</div>
     <span class="proj-status status-done">완료</span>
   </div>
   <div class="proj-desc">
@@ -118,7 +165,7 @@ order: 2
 
 <div class="proj-card">
   <div class="proj-header">
-    <div class="proj-title">🔍 Semantic Search Engine</div>
+    <div class="proj-title">Semantic Search Engine</div>
     <span class="proj-status status-done">완료</span>
   </div>
   <div class="proj-desc">
@@ -134,7 +181,7 @@ order: 2
 
 <div class="proj-card">
   <div class="proj-header">
-    <div class="proj-title">📊 AI-Powered Data Analysis Dashboard</div>
+    <div class="proj-title">AI-Powered Data Analysis Dashboard</div>
     <span class="proj-status status-done">완료</span>
   </div>
   <div class="proj-desc">
