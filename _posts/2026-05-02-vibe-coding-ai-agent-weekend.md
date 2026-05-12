@@ -1,7 +1,7 @@
 ---
 title: "주말에 AI 에이전트 만들다가 생긴 일 🤣"
 date: 2026-05-02 09:00:00 +0900
-categories: [Vibing Coding, 주말프로젝트]
+categories: [Vibe Coding, 주말프로젝트]
 tags: [ai-agent, langgraph, vibe-coding, 주말프로젝트, langchain]
 ---
 

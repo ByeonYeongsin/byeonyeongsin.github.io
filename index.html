@@ -1,3 +1,299 @@
 ---
-layout: home
+layout: page
+title: ""
 ---
+
+<style>
+/* ===== CV 전체 레이아웃 ===== */
+.cv-wrapper { max-width: 860px; margin: 0 auto; }
+
+/* ===== 프로필 헤더 ===== */
+.cv-header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 32px;
+  background: linear-gradient(135deg, #1e2235 0%, #2d3561 100%);
+  border-radius: 16px;
+  margin-bottom: 36px;
+  color: #fff;
+}
+.cv-avatar {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; flex-shrink: 0;
+  border: 3px solid rgba(255,255,255,0.2);
+}
+.cv-name { font-size: 2rem; font-weight: 700; margin: 0 0 6px; }
+.cv-role { font-size: 1.05rem; color: #a78bfa; margin: 0 0 12px; font-weight: 500; }
+.cv-meta { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.88rem; color: #cbd5e0; }
+.cv-meta span { display: flex; align-items: center; gap: 5px; }
+
+/* ===== 섹션 공통 ===== */
+.cv-section { margin-bottom: 36px; }
+.cv-section-title {
+  font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #667eea;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 6px; margin-bottom: 18px;
+}
+
+/* ===== 기술 스택 ===== */
+.skill-group { margin-bottom: 12px; }
+.skill-label { font-size: 0.85rem; color: #718096; margin-bottom: 6px; font-weight: 600; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.skill-tag {
+  background: #eef2ff; color: #4f46e5;
+  padding: 4px 13px; border-radius: 20px;
+  font-size: 0.82rem; font-weight: 500;
+  border: 1px solid #c7d2fe;
+}
+.skill-tag.hot { background: #fdf4ff; color: #7c3aed; border-color: #ddd6fe; }
+
+/* ===== 경력/학력 타임라인 ===== */
+.timeline { position: relative; }
+.timeline-item {
+  display: flex; gap: 18px;
+  margin-bottom: 22px;
+}
+.timeline-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: #667eea; flex-shrink: 0;
+  margin-top: 6px; position: relative;
+}
+.timeline-dot::after {
+  content: ''; position: absolute;
+  left: 5px; top: 12px;
+  width: 2px; height: calc(100% + 16px);
+  background: #e2e8f0;
+}
+.timeline-item:last-child .timeline-dot::after { display: none; }
+.timeline-period { font-size: 0.8rem; color: #718096; white-space: nowrap; min-width: 80px; }
+.timeline-content h4 { margin: 0 0 3px; font-size: 0.97rem; font-weight: 600; }
+.timeline-content p { margin: 0; font-size: 0.87rem; color: #718096; }
+.timeline-content .badge {
+  display: inline-block; font-size: 0.75rem;
+  background: #eef2ff; color: #667eea;
+  padding: 1px 8px; border-radius: 10px; margin-top: 4px;
+}
+
+/* ===== 프로젝트 카드 ===== */
+.project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.project-card {
+  border: 1px solid #e2e8f0; border-radius: 10px;
+  padding: 16px; transition: all 0.2s;
+}
+.project-card:hover {
+  border-color: #667eea;
+  box-shadow: 0 4px 15px rgba(102,126,234,0.12);
+  transform: translateY(-2px);
+}
+.project-card h4 { margin: 0 0 6px; font-size: 0.95rem; }
+.project-card p { margin: 0 0 10px; font-size: 0.83rem; color: #718096; line-height: 1.5; }
+.project-tech { display: flex; flex-wrap: wrap; gap: 5px; }
+.project-tech span {
+  font-size: 0.75rem; background: #f0f9ff;
+  color: #0369a1; padding: 2px 8px; border-radius: 10px;
+}
+
+/* ===== 최근 포스트 ===== */
+.post-row {
+  display: flex; align-items: flex-start;
+  gap: 12px; padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.post-row:last-child { border-bottom: none; }
+.post-date { font-size: 0.78rem; color: #aaa; white-space: nowrap; min-width: 80px; }
+.post-cat {
+  font-size: 0.73rem; background: #667eea;
+  color: white; padding: 2px 8px; border-radius: 10px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.post-title { font-size: 0.9rem; }
+.post-title a { color: inherit; text-decoration: none; }
+.post-title a:hover { color: #667eea; }
+
+@media (max-width: 640px) {
+  .cv-header { flex-direction: column; text-align: center; }
+  .project-grid { grid-template-columns: 1fr; }
+  .cv-meta { justify-content: center; }
+}
+</style>
+
+<div class="cv-wrapper">
+
+  <!-- ===== 프로필 헤더 ===== -->
+  <div class="cv-header">
+    <div class="cv-avatar">🤖</div>
+    <div>
+      <div class="cv-name">Yeongsin Byeon</div>
+      <div class="cv-role">AI Engineer &amp; ML Researcher</div>
+      <div class="cv-meta">
+        <span>📍 Seoul, South Korea</span>
+        <span>💼 AI Engineer @ Kolon</span>
+        <span>📧 yeongsin_byeon@kolon.com</span>
+        <span><a href="https://github.com/ByeonYeongsin" style="color:#a78bfa;">GitHub</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 한 줄 소개 ===== -->
+  <div class="cv-section">
+    <div class="cv-section-title">Summary</div>
+    <p style="line-height:1.8; color:#4a5568;">
+      LLM, RAG 시스템, AI 에이전트 개발에 열정을 가진 AI 엔지니어입니다.
+      최신 AI 기술을 탐구하고 실제 비즈니스 문제에 적용하는 것을 즐깁니다.
+      이 블로그를 통해 학습 내용, 프로젝트 경험, 논문 리뷰를 공유합니다.
+    </p>
+  </div>
+
+  <!-- ===== 기술 스택 ===== -->
+  <div class="cv-section">
+    <div class="cv-section-title">Tech Stack</div>
+
+    <div class="skill-group">
+      <div class="skill-label">Language</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Bash</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">AI / ML Framework</div>
+      <div class="skill-tags">
+        <span class="skill-tag hot">LangChain</span>
+        <span class="skill-tag hot">LangGraph</span>
+        <span class="skill-tag hot">HuggingFace</span>
+        <span class="skill-tag">PyTorch</span>
+        <span class="skill-tag">OpenAI API</span>
+        <span class="skill-tag">Anthropic API</span>
+        <span class="skill-tag">LlamaIndex</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">Specialization</div>
+      <div class="skill-tags">
+        <span class="skill-tag hot">RAG Systems</span>
+        <span class="skill-tag hot">LLM Fine-tuning</span>
+        <span class="skill-tag hot">AI Agent</span>
+        <span class="skill-tag">Prompt Engineering</span>
+        <span class="skill-tag">Vector Database</span>
+        <span class="skill-tag">NLP</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">Infra / Tools</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">FastAPI</span>
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Weights &amp; Biases</span>
+        <span class="skill-tag">Pinecone</span>
+        <span class="skill-tag">PostgreSQL</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 경력 ===== -->
+  <div class="cv-section">
+    <div class="cv-section-title">Experience</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div style="min-width:80px; font-size:0.8rem; color:#718096; padding-top:4px;">2024.01 ~</div>
+        <div class="timeline-content">
+          <h4>AI Engineer — Kolon</h4>
+          <p>LLM 기반 사내 AI 서비스 개발 및 운영<br>RAG 파이프라인 설계 및 최적화</p>
+          <span class="badge">LangChain · RAG · FastAPI</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div style="min-width:80px; font-size:0.8rem; color:#718096; padding-top:4px;">2022.03 ~<br>2023.12</div>
+        <div class="timeline-content">
+          <h4>ML Engineer — [Previous Company]</h4>
+          <p>추천 시스템 및 NLP 모델 개발<br>데이터 파이프라인 구축</p>
+          <span class="badge">PyTorch · HuggingFace · Airflow</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 학력 ===== -->
+  <div class="cv-section">
+    <div class="cv-section-title">Education</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div style="min-width:80px; font-size:0.8rem; color:#718096; padding-top:4px;">~ 2022.02</div>
+        <div class="timeline-content">
+          <h4>Computer Science — [University]</h4>
+          <p>학사 졸업 · 머신러닝 / 데이터사이언스 전공</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 주요 프로젝트 ===== -->
+  <div class="cv-section">
+    <div class="cv-section-title">Featured Projects</div>
+    <div class="project-grid">
+      <div class="project-card">
+        <h4>🤖 Advanced RAG System</h4>
+        <p>벡터 DB + LLM 기반 고급 문서 분석 시스템</p>
+        <div class="project-tech">
+          <span>LangChain</span><span>Pinecone</span><span>FastAPI</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <h4>🎯 LLM Fine-tuning Pipeline</h4>
+        <p>QLoRA 기반 도메인 특화 LLM 파인튜닝</p>
+        <div class="project-tech">
+          <span>PyTorch</span><span>QLoRA</span><span>HuggingFace</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <h4>💬 Multi-Turn Conversation AI</h4>
+        <p>장기 메모리를 활용한 개인화 AI 챗봇</p>
+        <div class="project-tech">
+          <span>GPT-4</span><span>LangGraph</span><span>SQLite</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <h4>🔍 Semantic Search Engine</h4>
+        <p>임베딩 기반 의미론적 검색 엔진</p>
+        <div class="project-tech">
+          <span>FAISS</span><span>Sentence Transformers</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:right; margin-top:10px;">
+      <a href="/yeongsin.github.io/projects/" style="font-size:0.88rem; color:#667eea;">모든 프로젝트 보기 →</a>
+    </div>
+  </div>
+
+  <!-- ===== 최근 포스트 ===== -->
+  <div class="cv-section">
+    <div class="cv-section-title">Recent Posts</div>
+    {% for post in site.posts limit:6 %}
+    <div class="post-row">
+      <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+      {% if post.categories.first %}
+      <span class="post-cat">{{ post.categories.first }}</span>
+      {% endif %}
+      <div class="post-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>

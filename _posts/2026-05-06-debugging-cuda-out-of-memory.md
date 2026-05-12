@@ -1,7 +1,7 @@
 ---
 title: "CUDA Out of Memory? 이 8가지 방법을 시도해보세요"
 date: 2026-05-06 09:00:00 +0900
-categories: [Vibing Coding, Debugging]
+categories: [Vibe Coding, Debugging]
 tags: [cuda, gpu, debugging, pytorch, oom]
 ---
 

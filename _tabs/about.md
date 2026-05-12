@@ -1,6 +1,7 @@
 ---
-icon: fas fa-info-circle
-order: 4
+icon: fas fa-user
+title: About
+order: 5
 ---
 
 # 안녕하세요! 👋
@@ -18,23 +19,16 @@ order: 4
 ## 🛠️ 기술 스택
 
 ### Languages
-`Python` `SQL` `JavaScript`
+`Python` `SQL` `JavaScript` `Bash`
 
 ### AI/ML Frameworks
-`PyTorch` `TensorFlow` `HuggingFace` `LangChain` `LlamaIndex` `OpenAI API`
+`PyTorch` `HuggingFace` `LangChain` `LangGraph` `LlamaIndex` `OpenAI API` `Anthropic API`
 
 ### Specializations
-`LLM Fine-tuning` `RAG Systems` `Prompt Engineering` `Vector Databases` `NLP`
+`LLM Fine-tuning` `RAG Systems` `AI Agent` `Prompt Engineering` `Vector Databases` `NLP`
 
 ### Tools & Infra
-`Docker` `Git` `AWS` `Jupyter` `Weights & Biases` `FastAPI`
-
-## 💼 경력
-
-| 기간 | 역할 | 설명 |
-|-----|------|------|
-| 현재 | AI Engineer | LLM 기반 서비스 개발 및 운영 |
-| 이전 | ML Engineer | 추천 시스템 및 NLP 모델 개발 |
+`Docker` `FastAPI` `AWS` `Git` `Weights & Biases` `Pinecone` `PostgreSQL`
 
 ## 📚 이 블로그에서 다루는 내용
 
@@ -43,7 +37,8 @@ order: 4
 | 🤖 AI Development | 실제 AI/ML 프로젝트 구현 경험 |
 | 📖 AI Study | 최신 기술 튜토리얼 및 개념 정리 |
 | 📰 Paper Review | 주요 AI 논문 분석 및 요약 |
-| 🎨 Vibing Coding | 개발자 일상, 삽질 경험, 재미있는 개발 이야기 |
+| 💻 Development | 백엔드, API, 소프트웨어 개발 |
+| 🎨 Vibe Coding | AI 도구로 바이브코딩하는 개발 일상 |
 | 🔧 Tools & Tips | 유용한 도구와 생산성 팁 |
 
 ## 📬 연락처
