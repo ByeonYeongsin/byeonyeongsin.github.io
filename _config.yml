@@ -1,40 +1,136 @@
+theme: jekyll-theme-chirpy
+
+lang: ko-KR
+timezone: Asia/Seoul
+
 title: Yeongsin's AI Lab
-description: AI Engineer's personal blog - sharing knowledge on LLMs, RAG systems, and machine learning
-baseurl: "/yeongsin.github.io"
+tagline: AI Engineer · LLM · RAG · ML Systems
+
+description: >-
+  LLM, RAG 시스템, 머신러닝에 열정을 가진 AI 엔지니어의 기술 블로그입니다.
+  최신 AI 트렌드, 논문 리뷰, 개발 경험을 공유합니다.
+
 url: "https://byeonyeongsin.github.io"
-author:
+baseurl: "/yeongsin.github.io"
+
+github:
+  username: ByeonYeongsin
+
+social:
   name: Yeongsin Byeon
   email: yeongsin_byeon@kolon.com
-  bio: AI Engineer & ML Researcher
-  location: Seoul, South Korea
+  links:
+    - https://github.com/ByeonYeongsin
 
-# Theme
-theme: minima
-plugins:
-  - jekyll-feed
-  - jekyll-paginate
+# ===========================
+# 사이드바 아바타 이미지
+# ===========================
+avatar: ""
 
-# Pagination
-paginate: 10
-paginate_path: "/page:num/"
+# ===========================
+# TOC 설정
+# ===========================
+toc: true
 
-# Markdown
+# ===========================
+# 댓글 (선택)
+# ===========================
+comments:
+  active: ""
+
+# ===========================
+# 검색
+# ===========================
+search:
+  provider: local
+
+# ===========================
+# SEO
+# ===========================
+google_site_verification: ""
+
+# ===========================
+# Analytics (선택)
+# ===========================
+analytics:
+  google:
+    id: ""
+
+# ===========================
+# 빌드 설정
+# ===========================
 markdown: kramdown
-permalink: /:categories/:year/:month/:day/:title/
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
 
-# Categories
+permalink: /posts/:title/
+
+paginate: 10
+
 collections:
-  categories:
+  tabs:
     output: true
-    permalink: /:collection/:name/
+    sort_by: order
 
-# Social Media
-social_links:
-  github: ByeonYeongsin
-  linkedin: yeongsin-byeon
-  email: yeongsin_byeon@kolon.com
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: false
+      toc: true
+  - scope:
+      path: "_tabs"
+      type: tabs
+    values:
+      layout: page
+      permalink: /:title/
 
-# Head
-head_includes:
-  - <meta name="viewport" content="width=device-width, initial-scale=1">
-  - <meta charset="UTF-8">
+sass:
+  style: compressed
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: [development]
+
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - docs
+  - tools
+  - README.md
+  - CHANGELOG.md
+  - "*.sh"
+  - node_modules
+  - package*.json
+
+plugins:
+  - jekyll-paginate
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-archives
+  - jekyll-feed
+
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/

@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "LLM Fine-tuning 필수 팁과 트릭"
-date: 2026-05-09
-categories: [ai-development]
-tags: [Fine-tuning, LLM, PyTorch, QLoRA]
-excerpt: "LLM을 효율적으로 파인튜닝하기 위한 실전 팁들을 공유합니다."
+date: 2026-05-09 09:00:00 +0900
+categories: [AI Development, Fine-tuning]
+tags: [fine-tuning, llm, pytorch, qlora, huggingface]
 ---
 
 ## LLM Fine-tuning의 핵심 원리
@@ -66,38 +64,25 @@ dataset = clean_and_filter_dataset(
 ## 4️⃣ 평가 및 검증
 
 ```python
-# 파인튜닝 후 성능 평가
 from evaluate import load
 
 metric = load("rouge")
-
 predictions = model.generate(test_inputs)
-results = metric.compute(
-    predictions=predictions,
-    references=test_labels
-)
-
+results = metric.compute(predictions=predictions, references=test_labels)
 print(f"ROUGE Score: {results}")
 ```
 
 ## 5️⃣ 흔한 실수들
 
-### ❌ 너무 많은 에포크
-과적합 위험 증가 → 2~3 에포크 충분
-
-### ❌ 잘못된 learning rate
-모델이 발산하거나 학습 정체 → 1e-4부터 시작해서 조정
-
-### ❌ 데이터 검증 부족
-상관없는 데이터로 학습 → 반드시 QA 검증 필수
+- ❌ **너무 많은 에포크**: 과적합 위험 → 2~3 에포크로 충분
+- ❌ **잘못된 learning rate**: 발산 위험 → 1e-4부터 시작
+- ❌ **데이터 검증 부족**: 품질 낮은 데이터 사용 금지
 
 ## 🎯 Best Practice
 
 1. **작은 데이터로 시작**: 1000개 샘플부터 테스트
 2. **체계적인 로깅**: WandB/TensorBoard로 모니터링
 3. **정기적 검증**: 매 100 스텝마다 검증 데이터 평가
-4. **증분 학습**: 필요시 여러 번의 짧은 파인튜닝이 1번의 긴 파인튜닝보다 좋음
-
----
+4. **증분 학습**: 여러 번의 짧은 파인튜닝이 효과적
 
 다음 포스트에서는 실제 파인튜닝 워크플로우를 상세하게 다루겠습니다!

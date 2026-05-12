@@ -1,10 +1,9 @@
 ---
-layout: post
 title: "RAG 시스템 완벽 가이드: LLM과 벡터 데이터베이스 통합"
-date: 2026-05-10
-categories: [ai-development]
-tags: [RAG, LLM, LangChain, Vector Database]
-excerpt: "RAG(Retrieval-Augmented Generation) 시스템의 기초부터 실제 구현까지 완벽하게 이해해보세요."
+date: 2026-05-10 09:00:00 +0900
+categories: [AI Development, RAG]
+tags: [rag, llm, langchain, vector-database, python]
+pin: true
 ---
 
 ## RAG란?
