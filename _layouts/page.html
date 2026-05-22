@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<header class="header">
+  <div class="header-content">
+    <div class="header-brand">Yeongsin's AI Lab</div>
+    <nav class="header-nav">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/posts/' | relative_url }}">Posts</a>
+      <a href="{{ '/projects/' | relative_url }}">Projects</a>
+      <a href="{{ '/about/' | relative_url }}">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container" style="padding: 60px 24px;">
+  <div style="max-width: 900px; margin: 0 auto;">
+    <h1 style="margin-bottom: 32px;">{{ page.title }}</h1>
+
+    <div class="post-content" style="
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--color-text-primary);
+    ">
+      {{ content }}
+    </div>
+  </div>
+</div>

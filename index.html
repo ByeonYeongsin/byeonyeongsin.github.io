@@ -1,397 +1,87 @@
 ---
-layout: page
-title: ""
+layout: default
+title: "Yeongsin's AI Lab"
 ---
 
-<style>
-/* ── 전체 래퍼 ── */
-.cv { max-width: 820px; margin: 0 auto; }
+<!-- Header Navigation -->
+<header class="header">
+  <div class="header-content">
+    <div class="header-brand">Yeongsin's AI Lab</div>
+    <nav class="header-nav">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/posts/' | relative_url }}">Posts</a>
+      <a href="{{ '/projects/' | relative_url }}">Projects</a>
+      <a href="{{ '/about/' | relative_url }}">About</a>
+    </nav>
+  </div>
+</header>
 
-/* ── 프로필 헤더 ── */
-.cv-header {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  padding: 28px 32px;
-  border: 1px solid var(--border-color, #d8d8d8);
-  border-radius: 8px;
-  margin-bottom: 32px;
-}
-.cv-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: #1f2328;
-  color: #fff;
-  font-size: 1.6rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  letter-spacing: -1px;
-}
-.cv-name {
-  font-size: 1.7rem;
-  font-weight: 700;
-  margin: 0 0 4px;
-  color: var(--heading-color, #1f2328);
-}
-.cv-role {
-  font-size: 0.95rem;
-  color: var(--label-color, #57606a);
-  margin: 0 0 12px;
-}
-.cv-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  font-size: 0.84rem;
-  color: var(--label-color, #57606a);
-}
-.cv-meta a {
-  color: inherit;
-  text-decoration: none;
-}
-.cv-meta a:hover {
-  text-decoration: underline;
-}
-
-/* ── 섹션 공통 ── */
-.cv-sec { margin-bottom: 32px; }
-.cv-sec-title {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--label-color, #57606a);
-  border-bottom: 1px solid var(--border-color, #d8d8d8);
-  padding-bottom: 6px;
-  margin-bottom: 16px;
-}
-
-/* ── Summary ── */
-.cv-summary {
-  font-size: 0.92rem;
-  line-height: 1.75;
-  color: var(--text-color, #24292f);
-}
-
-/* ── 기술 스택 ── */
-.skill-group { margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px; }
-.skill-label {
-  font-size: 0.79rem;
-  color: var(--label-color, #57606a);
-  font-weight: 600;
-  white-space: nowrap;
-  min-width: 110px;
-  padding-top: 4px;
-}
-.skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.skill-tag {
-  font-size: 0.8rem;
-  background: var(--card-bg, #f6f8fa);
-  color: var(--text-color, #24292f);
-  border: 1px solid var(--border-color, #d0d7de);
-  padding: 3px 11px;
-  border-radius: 4px;
-}
-
-/* ── 타임라인 ── */
-.timeline { padding-left: 0; }
-.tl-item {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-.tl-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--label-color, #8b949e);
-  flex-shrink: 0;
-  margin-top: 7px;
-  position: relative;
-}
-.tl-dot::after {
-  content: '';
-  position: absolute;
-  left: 4px;
-  top: 9px;
-  width: 1px;
-  height: calc(100% + 22px);
-  background: var(--border-color, #d0d7de);
-}
-.tl-item:last-child .tl-dot::after { display: none; }
-.tl-period {
-  font-size: 0.79rem;
-  color: var(--label-color, #57606a);
-  white-space: nowrap;
-  min-width: 90px;
-  padding-top: 4px;
-}
-.tl-body h4 {
-  margin: 0 0 3px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--heading-color, #1f2328);
-}
-.tl-body p {
-  margin: 0 0 5px;
-  font-size: 0.85rem;
-  color: var(--label-color, #57606a);
-  line-height: 1.55;
-}
-.tl-badge {
-  display: inline-block;
-  font-size: 0.75rem;
-  background: var(--card-bg, #f6f8fa);
-  color: var(--label-color, #57606a);
-  border: 1px solid var(--border-color, #d0d7de);
-  padding: 1px 8px;
-  border-radius: 4px;
-}
-
-/* ── 프로젝트 카드 ── */
-.proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.proj-card {
-  border: 1px solid var(--border-color, #d0d7de);
-  border-radius: 6px;
-  padding: 16px;
-  transition: border-color 0.15s;
-}
-.proj-card:hover {
-  border-color: var(--label-color, #8b949e);
-}
-.proj-card h4 {
-  margin: 0 0 6px;
-  font-size: 0.93rem;
-  color: var(--heading-color, #1f2328);
-}
-.proj-card p {
-  margin: 0 0 10px;
-  font-size: 0.83rem;
-  color: var(--label-color, #57606a);
-  line-height: 1.5;
-}
-.proj-tech { display: flex; flex-wrap: wrap; gap: 5px; }
-.proj-tech span {
-  font-size: 0.75rem;
-  background: var(--card-bg, #f6f8fa);
-  color: var(--label-color, #57606a);
-  border: 1px solid var(--border-color, #d0d7de);
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-/* ── 최근 포스트 ── */
-.post-row {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  padding: 9px 0;
-  border-bottom: 1px solid var(--border-color, #f0f0f0);
-}
-.post-row:last-child { border-bottom: none; }
-.post-date {
-  font-size: 0.77rem;
-  color: var(--label-color, #8b949e);
-  white-space: nowrap;
-  min-width: 82px;
-}
-.post-cat {
-  font-size: 0.72rem;
-  color: var(--label-color, #57606a);
-  background: var(--card-bg, #f6f8fa);
-  border: 1px solid var(--border-color, #d0d7de);
-  padding: 1px 8px;
-  border-radius: 4px;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.post-title { font-size: 0.9rem; flex: 1; min-width: 0; }
-.post-title a {
-  color: var(--text-color, #24292f);
-  text-decoration: none;
-}
-.post-title a:hover { text-decoration: underline; }
-
-/* ── 반응형 ── */
-@media (max-width: 600px) {
-  .cv-header { flex-direction: column; text-align: center; }
-  .cv-meta { justify-content: center; }
-  .proj-grid { grid-template-columns: 1fr; }
-  .skill-group { flex-direction: column; gap: 5px; }
-  .skill-label { min-width: unset; }
-}
-</style>
-
-<div class="cv">
-
-  <!-- 프로필 헤더 -->
-  <div class="cv-header">
-    <div class="cv-avatar">YB</div>
-    <div>
-      <div class="cv-name">Yeongsin Byeon</div>
-      <div class="cv-role">AI Engineer &middot; LLM &middot; RAG &middot; ML Systems</div>
-      <div class="cv-meta">
-        <span>📍 Seoul, Korea</span>
-        <span>💼 Kolon</span>
-        <span>📧 yeongsin_byeon@kolon.com</span>
-        <span><a href="https://github.com/ByeonYeongsin">GitHub ↗</a></span>
-      </div>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Yeongsin Byeon</h1>
+    <p>AI Engineer specializing in LLM, RAG systems, and ML infrastructure. Building intelligent systems that solve real-world problems with cutting-edge AI technologies.</p>
+  </div>
+  <aside class="hero-card">
+    <h3>Tech Stack</h3>
+    <div class="hero-skills">
+      <span class="hero-skill">🐍 Python, JavaScript</span>
+      <span class="hero-skill">🤖 LangChain, LangGraph</span>
+      <span class="hero-skill">📚 RAG, Vector DB</span>
+      <span class="hero-skill">🚀 FastAPI, Docker</span>
+      <span class="hero-skill">☁️ AWS, Pinecone</span>
     </div>
+  </aside>
+</section>
+
+<!-- Featured Posts Section -->
+<section class="container" style="padding: 40px 24px 0;">
+  <div class="posts-header">
+    <h2>Featured Posts</h2>
+    <a href="{{ '/posts/' | relative_url }}" class="view-all">View All →</a>
   </div>
 
-  <!-- Summary -->
-  <div class="cv-sec">
-    <div class="cv-sec-title">Summary</div>
-    <p class="cv-summary">
-      LLM, RAG 시스템, AI 에이전트 개발에 집중하는 AI 엔지니어입니다.
-      최신 AI 기술을 실제 비즈니스 문제에 적용하는 것을 즐기며,
-      이 블로그를 통해 학습 내용과 프로젝트 경험을 공유합니다.
-    </p>
-  </div>
-
-  <!-- Tech Stack -->
-  <div class="cv-sec">
-    <div class="cv-sec-title">Tech Stack</div>
-    <div class="skill-group">
-      <span class="skill-label">Language</span>
-      <div class="skill-tags">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">Bash</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <span class="skill-label">AI / ML</span>
-      <div class="skill-tags">
-        <span class="skill-tag">LangChain</span>
-        <span class="skill-tag">LangGraph</span>
-        <span class="skill-tag">HuggingFace</span>
-        <span class="skill-tag">PyTorch</span>
-        <span class="skill-tag">OpenAI API</span>
-        <span class="skill-tag">Anthropic API</span>
-        <span class="skill-tag">LlamaIndex</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <span class="skill-label">Specialization</span>
-      <div class="skill-tags">
-        <span class="skill-tag">RAG Systems</span>
-        <span class="skill-tag">LLM Fine-tuning</span>
-        <span class="skill-tag">AI Agent</span>
-        <span class="skill-tag">Prompt Engineering</span>
-        <span class="skill-tag">Vector DB</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <span class="skill-label">Infra / Tools</span>
-      <div class="skill-tags">
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">FastAPI</span>
-        <span class="skill-tag">AWS</span>
-        <span class="skill-tag">Pinecone</span>
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">W&amp;B</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Experience -->
-  <div class="cv-sec">
-    <div class="cv-sec-title">Experience</div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-period">2024.01 –<br>현재</div>
-        <div class="tl-body">
-          <h4>AI Engineer — Kolon</h4>
-          <p>LLM 기반 사내 AI 서비스 개발 및 운영<br>RAG 파이프라인 설계 및 최적화</p>
-          <span class="tl-badge">LangChain · RAG · FastAPI</span>
+  <div class="posts-featured">
+    {% for post in site.posts limit:3 %}
+    <div class="featured-post">
+      {% if forloop.first %}
+        <div>
+          <span class="featured-label">{{ post.categories.first | default: 'AI' }}</span>
+          <h3 class="featured-title">{{ post.title }}</h3>
+          <p class="featured-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+          <span class="featured-date">{{ post.date | date: "%B %d, %Y" }}</span>
         </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-period">2022.03 –<br>2023.12</div>
-        <div class="tl-body">
-          <h4>ML Engineer</h4>
-          <p>추천 시스템 및 NLP 모델 개발<br>데이터 파이프라인 구축</p>
-          <span class="tl-badge">PyTorch · HuggingFace · Airflow</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Education -->
-  <div class="cv-sec">
-    <div class="cv-sec-title">Education</div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-period">~ 2022.02</div>
-        <div class="tl-body">
-          <h4>Computer Science</h4>
-          <p>학사 졸업 · 머신러닝 / 데이터사이언스 전공</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Featured Projects -->
-  <div class="cv-sec">
-    <div class="cv-sec-title">Featured Projects</div>
-    <div class="proj-grid">
-      <div class="proj-card">
-        <h4>Advanced RAG System</h4>
-        <p>벡터 DB + LLM 기반 고급 문서 분석 시스템. 하이브리드 검색, Reranking 지원.</p>
-        <div class="proj-tech">
-          <span>LangChain</span><span>Pinecone</span><span>FastAPI</span>
-        </div>
-      </div>
-      <div class="proj-card">
-        <h4>LLM Fine-tuning Pipeline</h4>
-        <p>QLoRA 기반 도메인 특화 LLM 파인튜닝. 8GB GPU에서 13B 모델 학습.</p>
-        <div class="proj-tech">
-          <span>PyTorch</span><span>QLoRA</span><span>HuggingFace</span>
-        </div>
-      </div>
-      <div class="proj-card">
-        <h4>Multi-Turn Conversation AI</h4>
-        <p>장기 메모리를 활용한 개인화 AI 챗봇.</p>
-        <div class="proj-tech">
-          <span>GPT-4</span><span>LangGraph</span><span>SQLite</span>
-        </div>
-      </div>
-      <div class="proj-card">
-        <h4>Semantic Search Engine</h4>
-        <p>임베딩 기반 의미론적 검색 엔진.</p>
-        <div class="proj-tech">
-          <span>FAISS</span><span>Sentence Transformers</span>
-        </div>
-      </div>
-    </div>
-    <div style="text-align: right; margin-top: 10px;">
-      <a href="{{ '/projects/' | relative_url }}" style="font-size: 0.85rem; color: var(--label-color, #57606a);">모든 프로젝트 보기 →</a>
-    </div>
-  </div>
-
-  <!-- Recent Posts -->
-  <div class="cv-sec">
-    <div class="cv-sec-title">Recent Posts</div>
-    {% for post in site.posts limit:6 %}
-    <div class="post-row">
-      <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
-      {% if post.categories.first %}
-      <span class="post-cat">{{ post.categories.first }}</span>
+        <div class="featured-image"></div>
+      {% else %}
+        <span class="featured-label">{{ post.categories.first | default: 'AI' }}</span>
+        <h3 class="featured-title">{{ post.title }}</h3>
+        <p class="featured-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+        <span class="featured-date">{{ post.date | date: "%B %d, %Y" }}</span>
       {% endif %}
-      <div class="post-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </div>
     </div>
     {% endfor %}
   </div>
+</section>
 
-</div>
+<!-- All Posts List Section -->
+<section class="container">
+  <div class="posts-header" style="margin-top: 40px;">
+    <h2>All Posts</h2>
+  </div>
+
+  <div class="posts-list">
+    {% for post in site.posts %}
+    <article class="post-item">
+      <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+      <h3 class="post-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h3>
+      <div class="post-tags">
+        {% for category in post.categories %}
+          <span class="tag">{{ category }}</span>
+        {% endfor %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>

@@ -11,7 +11,7 @@ description: >-
   최신 AI 트렌드, 논문 리뷰, 개발 경험을 공유합니다.
 
 url: "https://byeonyeongsin.github.io"
-baseurl: "/yeongsin.github.io"
+baseurl: ""
 
 github:
   username: ByeonYeongsin
