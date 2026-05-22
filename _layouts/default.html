@@ -4,6 +4,19 @@
     {% include head.html %}
   </head>
   <body>
-    {{ content }}
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="{{ '/' | relative_url }}" class="sidebar-brand">{{ site.title }}</a>
+      <nav class="sidebar-nav">
+        <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a>
+        <a href="{{ '/posts/' | relative_url }}" {% if page.collection == 'posts' %}class="active"{% endif %}>Posts</a>
+        <a href="{{ '/projects/' | relative_url }}" {% if page.title == 'Projects' %}class="active"{% endif %}>Projects</a>
+        <a href="{{ '/about/' | relative_url }}" {% if page.title == 'About' %}class="active"{% endif %}>About</a>
+      </nav>
+    </aside>
+
+    <main>
+      {{ content }}
+    </main>
   </body>
 </html>
