@@ -13,6 +13,7 @@
       <div class="topbar-dot topbar-dot-yellow"></div>
       <div class="topbar-dot topbar-dot-green"></div>
     </div>
+    <button class="topbar-sidebar-btn" id="topbarSidebarBtn" title="Open sidebar" style="display:none;">›</button>
     <div class="topbar-path">
       <span class="root">~/</span><span class="name">{{ site.title | downcase | replace: " ", "-" | replace: "'", "" }}</span>
       {% if page.title and page.layout != 'home' %}
@@ -31,9 +32,12 @@
   <div class="main-area">
     <!-- SIDEBAR -->
     <aside class="sidebar">
-      <div class="sidebar-header">
-        <div class="sidebar-section-label">Explorer</div>
-        <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-default);font-weight:600;">▾ AI-LAB</div>
+      <div class="sidebar-header" style="display:flex;align-items:center;">
+        <div>
+          <div class="sidebar-section-label">Explorer</div>
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-default);font-weight:600;">▾ AI-LAB</div>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle" title="Toggle sidebar">‹</button>
       </div>
       <div class="sidebar-tree">
         <div class="sidebar-item is-dir">▸ posts/</div>
@@ -64,6 +68,55 @@
       <span>{{ page.layout | default: 'page' }} · UTF-8</span>
     </div>
   </footer>
+
+
+<style>
+.topbar-sidebar-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 16px;
+  padding: 2px 6px;
+  line-height: 1;
+  transition: color 0.12s ease;
+  margin-left: 4px;
+}
+.topbar-sidebar-btn:hover { color: var(--green); }
+</style>
+
+<script>
+(function() {
+  var sidebar = document.querySelector('.sidebar');
+  var innerBtn = document.getElementById('sidebarToggle');
+  var outerBtn = document.getElementById('topbarSidebarBtn');
+  var COLLAPSED_KEY = 'sidebarCollapsed';
+
+  function setCollapsed(collapsed) {
+    if (collapsed) {
+      sidebar.classList.add('collapsed');
+      outerBtn.style.display = 'inline-flex';
+      innerBtn.textContent = '›';
+      localStorage.setItem(COLLAPSED_KEY, '1');
+    } else {
+      sidebar.classList.remove('collapsed');
+      outerBtn.style.display = 'none';
+      innerBtn.textContent = '‹';
+      localStorage.setItem(COLLAPSED_KEY, '0');
+    }
+  }
+
+  // restore state
+  setCollapsed(localStorage.getItem(COLLAPSED_KEY) === '1');
+
+  innerBtn.addEventListener('click', function() {
+    setCollapsed(!sidebar.classList.contains('collapsed'));
+  });
+  outerBtn.addEventListener('click', function() {
+    setCollapsed(false);
+  });
+})();
+</script>
 
 </body>
 </html>
