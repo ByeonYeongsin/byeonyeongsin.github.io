@@ -26,6 +26,9 @@
       <li><a href="{{ '/projects/' | relative_url }}" {% if page.url contains '/projects/' %}class="active"{% endif %}>projects</a></li>
       <li><a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about/' %}class="active"{% endif %}>about</a></li>
     </ul>
+    <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode" aria-label="Toggle theme">
+      <span class="theme-icon">☾</span>
+    </button>
   </header>
 
   <!-- MAIN AREA -->
@@ -83,10 +86,28 @@
   margin-left: 4px;
 }
 .topbar-sidebar-btn:hover { color: var(--green); }
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 3px 8px;
+  line-height: 1;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.theme-toggle:hover { color: var(--text-default); border-color: var(--border-light); }
+.theme-icon { font-size: 13px; }
 </style>
 
 <script>
 (function() {
+  /* ── sidebar toggle ── */
   var sidebar = document.querySelector('.sidebar');
   var innerBtn = document.getElementById('sidebarToggle');
   var outerBtn = document.getElementById('topbarSidebarBtn');
@@ -105,15 +126,28 @@
       localStorage.setItem(COLLAPSED_KEY, '0');
     }
   }
-
-  // restore state
   setCollapsed(localStorage.getItem(COLLAPSED_KEY) === '1');
+  innerBtn.addEventListener('click', function() { setCollapsed(!sidebar.classList.contains('collapsed')); });
+  outerBtn.addEventListener('click', function() { setCollapsed(false); });
 
-  innerBtn.addEventListener('click', function() {
-    setCollapsed(!sidebar.classList.contains('collapsed'));
-  });
-  outerBtn.addEventListener('click', function() {
-    setCollapsed(false);
+  /* ── theme toggle ── */
+  var themeBtn  = document.getElementById('themeToggle');
+  var themeIcon = themeBtn.querySelector('.theme-icon');
+  var THEME_KEY = 'theme';
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    themeIcon.textContent = theme === 'light' ? '☀' : '☾';
+    localStorage.setItem(THEME_KEY, theme);
+  }
+
+  var saved = localStorage.getItem(THEME_KEY) ||
+    (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  applyTheme(saved);
+
+  themeBtn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    applyTheme(current === 'light' ? 'dark' : 'light');
   });
 })();
 </script>

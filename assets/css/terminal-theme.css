@@ -42,6 +42,33 @@
   --transition-base: all 0.2s ease;
 }
 
+/* ── LIGHT MODE OVERRIDES ── */
+[data-theme="light"] {
+  --bg-base:        #ffffff;
+  --bg-panel:       #f6f8fa;
+  --bg-hover:       #eaeef2;
+  --bg-active:      #dce3ea;
+  --bg-overlay:     #d0d7de;
+
+  --border-default: #d0d7de;
+  --border-light:   #e1e7ed;
+  --border-focus:   #0969da;
+
+  --text-primary:   #1f2328;
+  --text-default:   #1f2328;
+  --text-muted:     #636c76;
+  --text-dim:       #9198a1;
+
+  --green:   #1a7f37;
+  --blue:    #0969da;
+  --orange:  #953800;
+  --purple:  #8250df;
+  --red:     #cf222e;
+  --yellow:  #7d4e00;
+  --white:   #1f2328;
+  --accent:  #0969da;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { -webkit-font-smoothing: antialiased; }
@@ -51,6 +78,7 @@ body {
   font-size: 14px;
   background: var(--bg-base);
   color: var(--text-default);
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 a { color: var(--blue); text-decoration: none; }
