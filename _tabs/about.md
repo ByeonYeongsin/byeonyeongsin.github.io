@@ -1,6 +1,6 @@
 ---
-icon: fas fa-user
-title: About
+layout: about
+title: about
 order: 5
 ---
 

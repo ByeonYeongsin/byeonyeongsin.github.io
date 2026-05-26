@@ -1,74 +1,68 @@
 ---
 layout: default
-title: "Yeongsin's AI Lab"
+title: ""
 ---
 
-<!-- Hero Section -->
-<section class="hero">
-  <div class="hero-text">
-    <h1>Yeongsin Byeon</h1>
-    <p>AI Engineer specializing in LLM, RAG systems, and ML infrastructure. Building intelligent systems that solve real-world problems with cutting-edge AI technologies.</p>
-  </div>
-  <aside class="hero-card">
-    <h3>Tech Stack</h3>
-    <div class="hero-skills">
-      <span class="hero-skill">🐍 Python, JavaScript</span>
-      <span class="hero-skill">🤖 LangChain, LangGraph</span>
-      <span class="hero-skill">📚 RAG, Vector DB</span>
-      <span class="hero-skill">🚀 FastAPI, Docker</span>
-      <span class="hero-skill">☁️ AWS, Pinecone</span>
-    </div>
-  </aside>
-</section>
+<style>
+.hero-section {
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border-default);
+  padding: 28px 32px 24px;
+}
+.post-section { padding: 20px 32px; }
+.section-prompt {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+</style>
 
-<!-- Featured Posts Section -->
-<section class="container" style="padding: 40px 40px 0;">
-  <div class="posts-header">
-    <h2>Featured Posts</h2>
-    <a href="{{ '/posts/' | relative_url }}" class="view-all">View All →</a>
-  </div>
-
-  <div class="posts-featured">
-    {% for post in site.posts limit:3 %}
-    <div class="featured-post">
-      {% if forloop.first %}
-        <div>
-          <span class="featured-label">{{ post.categories.first | default: 'AI' }}</span>
-          <h3 class="featured-title">{{ post.title }}</h3>
-          <p class="featured-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-          <span class="featured-date">{{ post.date | date: "%B %d, %Y" }}</span>
-        </div>
-        <div class="featured-image"></div>
-      {% else %}
-        <span class="featured-label">{{ post.categories.first | default: 'AI' }}</span>
-        <h3 class="featured-title">{{ post.title }}</h3>
-        <p class="featured-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
-        <span class="featured-date">{{ post.date | date: "%B %d, %Y" }}</span>
-      {% endif %}
-    </div>
-    {% endfor %}
-  </div>
-</section>
-
-<!-- All Posts List Section -->
-<section class="container">
-  <div class="posts-header" style="margin-top: 40px;">
-    <h2>All Posts</h2>
-  </div>
-
-  <div class="posts-list">
-    {% for post in site.posts %}
-    <article class="post-item">
-      <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
-      <h3 class="post-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h3>
-      <div class="post-tags">
-        {% for category in post.categories %}
-          <span class="tag">{{ category }}</span>
-        {% endfor %}
+<!-- HERO: Terminal Window -->
+<div class="hero-section">
+  <div class="terminal-window">
+    <div class="terminal-titlebar">
+      <div class="topbar-dots">
+        <div class="topbar-dot topbar-dot-red"></div>
+        <div class="topbar-dot topbar-dot-yellow"></div>
+        <div class="topbar-dot topbar-dot-green"></div>
       </div>
-    </article>
+      <span class="terminal-title">yeongsin@ai-lab: ~</span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="prompt-arrow">➜</span> <span class="prompt-path">~ </span><span>whoami</span></div>
+      <div style="color:var(--text-muted);padding-left:16px;">{{ site.social.name }} · ai-engineer · {{ site.title | downcase }}</div>
+      <div style="margin-top:4px;"><span class="prompt-arrow">➜</span> <span class="prompt-path">~ </span><span>cat README.md</span></div>
+      <div style="color:var(--text-muted);padding-left:16px;margin-top:4px;">
+        <span style="color:var(--green)"># {{ site.title }}</span><br>
+        {{ site.description }}<br>
+        <span style="color:var(--text-dim)"># tags: LLM · RAG · AI Agent · Python</span>
+      </div>
+      <div style="margin-top:8px;"><span class="prompt-arrow">➜</span> <span class="prompt-path">~ </span><span>ls -la posts/</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- POST LIST -->
+<div class="post-section">
+  <div class="section-prompt">
+    <span class="prompt-arrow">➜</span> <span class="prompt-path">~/posts </span>
+    total {{ site.posts | size }}
+  </div>
+
+  <div class="post-list">
+    {% for post in site.posts limit:10 %}
+    <a href="{{ post.url | relative_url }}" style="text-decoration:none;">
+      <div class="post-row {% if forloop.first %}featured{% endif %}">
+        <span class="post-row-date">{{ post.date | date: "%b %d" }}</span>
+        <span class="post-row-name {% if forloop.first %}highlight{% endif %}">{{ post.path | replace: '_posts/', '' }}</span>
+        {% if post.categories.first %}
+        <span class="post-tag {{ post.categories.first | downcase | replace: ' ', '-' }}">
+          {{ post.categories.first | downcase }}
+        </span>
+        {% endif %}
+      </div>
+    </a>
     {% endfor %}
   </div>
-</section>
+</div>

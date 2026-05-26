@@ -1,0 +1,64 @@
+---
+layout: default
+---
+
+<div class="tab-bar">
+  <div class="tab active">
+    <span style="color:var(--blue)">◆</span> profile.ts
+    <span style="color:var(--text-dim)">×</span>
+  </div>
+</div>
+
+<div class="post-content">
+  <div style="font-family:var(--font-mono);font-size:12px;color:var(--green);margin-bottom:20px;">
+    <span class="prompt-arrow">➜</span> <span style="color:var(--blue)">~ </span>cat profile.ts
+  </div>
+
+  <!-- Profile Card -->
+  <div style="display:flex;gap:24px;padding:24px;background:var(--bg-panel);border:1px solid var(--border-default);border-radius:10px;margin-bottom:32px;">
+    <div class="profile-avatar">YB</div>
+    <div>
+      <div style="font-size:24px;font-weight:800;letter-spacing:-0.02em;margin-bottom:4px;">{{ site.social.name }}</div>
+      <div style="font-family:var(--font-mono);font-size:13px;color:var(--green);margin-bottom:12px;">
+        <span style="color:var(--text-muted)">role: </span>"AI Engineer"
+        <span style="color:var(--text-muted)"> · company: </span>"Kolon"
+      </div>
+      <div style="display:flex;gap:12px;font-family:var(--font-mono);font-size:12px;color:var(--text-muted);">
+        <span>Seoul</span>
+        <span>{{ site.social.email }}</span>
+        {% for link in site.social.links %}<a href="{{ link }}" style="color:var(--blue);">GitHub</a>{% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Code Object -->
+  <div style="font-family:var(--font-mono);font-size:13px;line-height:1.9;">
+    <div><span style="color:var(--purple)">export const</span> <span style="color:var(--blue)"> profile</span> = {</div>
+    <div style="padding-left:24px;">
+      <div style="color:var(--text-dim)">// {{ site.description }}</div>
+      <div><span style="color:var(--purple)">focus</span>: [<span style="color:var(--green)">"LLM systems"</span>, <span style="color:var(--green)">"RAG"</span>, <span style="color:var(--green)">"AI agents"</span>],</div>
+      <div style="margin-top:8px;"><span style="color:var(--purple)">blog</span>: { <span style="color:var(--blue)">posts</span>: <span style="color:var(--orange)">{{ site.posts | size }}</span>, <span style="color:var(--blue)">updated</span>: <span style="color:var(--green)">"weekly"</span> },</div>
+    </div>
+    <div>} <span style="color:var(--purple)">as const</span>;</div>
+  </div>
+
+  <!-- Markdown Content -->
+  <div class="post-body" style="margin-top:32px;">{{ content }}</div>
+</div>
+
+<style>
+.post-body { font-size: 16px; line-height: 1.85; color: var(--text-default); }
+.post-body h2 { font-size: 22px; font-weight: 700; margin: 28px 0 12px; }
+.post-body h2::before { content: "## "; color: var(--text-dim); font-weight: 400; }
+.post-body h3 { font-size: 18px; font-weight: 600; margin: 20px 0 8px; }
+.post-body h3::before { content: "### "; color: var(--text-dim); font-weight: 400; }
+.post-body p { margin-bottom: 14px; }
+.post-body ul, .post-body ol { margin: 10px 0 14px 24px; }
+.post-body li { margin-bottom: 5px; }
+.post-body code { font-family: var(--font-mono); font-size: 0.9em; background: var(--bg-active); padding: 2px 6px; border-radius: 3px; color: var(--orange); }
+.post-body blockquote { border-left: 3px solid var(--green); padding-left: 20px; color: var(--text-muted); margin: 16px 0; }
+.post-body table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+.post-body th { background: var(--bg-panel); color: var(--text-muted); font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; padding: 8px 12px; border: 1px solid var(--border-default); text-align: left; }
+.post-body td { padding: 8px 12px; border: 1px solid var(--border-default); }
+.post-body tr:hover td { background: var(--bg-hover); }
+</style>

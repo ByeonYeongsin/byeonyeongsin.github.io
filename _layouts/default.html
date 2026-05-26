@@ -1,22 +1,69 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
-  <head>
-    {% include head.html %}
-  </head>
-  <body>
-    <!-- Sidebar Navigation -->
+<html lang="{{ page.lang | default: site.lang | default: 'ko' }}">
+<head>
+  {% include head.html %}
+  <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+</head>
+<body class="app-shell">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="topbar-dots">
+      <div class="topbar-dot topbar-dot-red"></div>
+      <div class="topbar-dot topbar-dot-yellow"></div>
+      <div class="topbar-dot topbar-dot-green"></div>
+    </div>
+    <div class="topbar-path">
+      <span class="root">~/</span><span class="name">{{ site.title | downcase | replace: " ", "-" | replace: "'", "" }}</span>
+      {% if page.title and page.layout != 'home' %}
+        <span class="root"> / {{ page.title | downcase | replace: " ", "-" }}</span>
+      {% endif %}
+    </div>
+    <ul class="topbar-nav">
+      <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>home</a></li>
+      <li><a href="{{ '/posts/' | relative_url }}" {% if page.url contains '/posts/' %}class="active"{% endif %}>posts</a></li>
+      <li><a href="{{ '/projects/' | relative_url }}" {% if page.url contains '/projects/' %}class="active"{% endif %}>projects</a></li>
+      <li><a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about/' %}class="active"{% endif %}>about</a></li>
+    </ul>
+  </header>
+
+  <!-- MAIN AREA -->
+  <div class="main-area">
+    <!-- SIDEBAR -->
     <aside class="sidebar">
-      <a href="{{ '/' | relative_url }}" class="sidebar-brand">{{ site.title }}</a>
-      <nav class="sidebar-nav">
-        <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a>
-        <a href="{{ '/posts/' | relative_url }}" {% if page.collection == 'posts' %}class="active"{% endif %}>Posts</a>
-        <a href="{{ '/projects/' | relative_url }}" {% if page.title == 'Projects' %}class="active"{% endif %}>Projects</a>
-        <a href="{{ '/about/' | relative_url }}" {% if page.title == 'About' %}class="active"{% endif %}>About</a>
-      </nav>
+      <div class="sidebar-header">
+        <div class="sidebar-section-label">Explorer</div>
+        <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-default);font-weight:600;">▾ AI-LAB</div>
+      </div>
+      <div class="sidebar-tree">
+        <div class="sidebar-item is-dir">▸ posts/</div>
+        {% for post in site.posts limit:6 %}
+        <div class="sidebar-item is-md" style="padding-left:26px;" onclick="location.href='{{ post.url | relative_url }}'">
+          ◆ {{ post.slug | truncate: 22, "" }}.md
+        </div>
+        {% endfor %}
+        <div class="sidebar-item is-dir" style="margin-top:4px;">▸ projects/</div>
+        <div class="sidebar-item is-ts {% if page.url contains '/about/' %}active{% endif %}" onclick="location.href='{{ '/about/' | relative_url }}'">◆ profile.ts</div>
+        <div class="sidebar-item is-md {% if page.url == '/' %}active{% endif %}" onclick="location.href='{{ '/' | relative_url }}'">◆ README.md</div>
+      </div>
     </aside>
 
-    <main>
+    <!-- CONTENT -->
+    <main class="content">
       {{ content }}
     </main>
-  </body>
+  </div>
+
+  <!-- STATUS BAR -->
+  <footer class="statusbar">
+    <div class="statusbar-left">
+      <span>⎇ main</span>
+      <span>✓ 0 errors</span>
+    </div>
+    <div class="statusbar-right">
+      <span>{{ page.layout | default: 'page' }} · UTF-8</span>
+    </div>
+  </footer>
+
+</body>
 </html>
